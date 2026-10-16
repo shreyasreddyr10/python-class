@@ -1,14 +1,21 @@
-from Point import Point
-
 class Robot:
-    def __init__(self, name, position):
+    """A mobile robot with a battery."""
+
+    def __init__(self, name, battery=100):
         self.name = name
-        self.position = position
+        self.battery = battery
 
-    def show(self):
-        print(f"Robot: {self.name}")
-        self.position.display()
+    def drain(self, amount):
+        self.battery = max(0, self.battery - amount)
 
-p = Point(5, 10)
-r = Robot("Robo1", p)
-r.show()
+    def status(self):
+        return f"{self.name}:{self.battery}%"
+
+
+r1 = Robot("Alpha")
+r2 = Robot("Beta", 60)
+
+r1.drain(35)
+
+print(r1.status())
+print(r2.status())
