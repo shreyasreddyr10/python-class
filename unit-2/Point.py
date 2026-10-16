@@ -3,5 +3,10 @@ class Point:
         self.x = x
         self.y = y
 
-    def display(self):
-        print(f"({self.x}, {self.y})")
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+
+p = Point(2, 3)
+
+print(p)
+print(f"robot is at {p}")
